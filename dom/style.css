@@ -1,0 +1,45 @@
+body {
+  color: #fff;
+  display: flex; /* Makes the body a flex container */
+  flex-direction: column; /* Arranges elements in a vertical column */
+  align-items: center; /* Centers elements horizontally */
+  justify-content: center; /* Centers elements vertically */
+  min-height: 100vh; /* Sets the minimum height to fill the entire screen */
+  background: linear-gradient(-180deg, black, rgb(20, 20, 58) 50%);
+}
+
+#main {
+  background: rgba(255, 255, 255, 0.45); /* Semi-transparent white background */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Adds a shadow effect */
+  backdrop-filter: blur(4px); /* Creates a glass-like blur effect */
+  -webkit-backdrop-filter: blur(4px); /* Ensures blur effect in Safari */
+  border-radius: 10px; /* Rounds the corners of the container */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Adds a light border */
+  padding: 2rem; /* Adds spacing inside the container */
+  text-align: center; /* Centers the text and content */
+  width: 20%; /* Sets the width of the container */
+}
+
+#main img {
+  margin-bottom: 1rem; /* Adds spacing below the image */
+  width: 40%; /* Sets the width of the image to 40% of its container */
+  filter: drop-shadow(
+    -3px -3px 4px #000
+  ); /* Adds a shadow effect to the image */
+}
+
+button {
+  padding: 10px 12px; /* Adds padding inside the button */
+  border-radius: 4px; /* Rounds the button edges */
+  border-color: transparent; /* Hides the border */
+  color: #000; /* Sets text color to white */
+  margin: 1rem; /* Adds spacing around the button */
+  box-shadow: -2px -2px 10px 0 #000; /* Adds a shadow effect */
+}
+
+#on {
+  background-color: rgb(91, 158, 91); /* Green background for the "On" button */
+}
+#off {
+  background-color: rgb(202, 68, 68); /* Red background for the "Off" button */
+}

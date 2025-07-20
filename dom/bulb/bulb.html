@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- Defines the character encoding for the webpage -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive -->
+    <title>Bulb On and Off</title> <!-- Sets the title of the webpage -->
+    <link rel="stylesheet" href="style.css"> <!-- Links the CSS file for styling -->
+</head>
+
+<body>
+
+    <div id="main"> <!-- Main container for the bulb and buttons -->
+        <div id="image-area"> <!-- Div to hold the bulb image -->
+            <img id="bulb" src="images/light-bulb-off.png" alt="Bulb Image"> <!-- Bulb image with default off state -->
+        </div>
+        <button id="on" onclick="on()">On</button> <!-- Button to turn the bulb on -->
+        <button id="off" onclick="off()">Off</button> <!-- Button to turn the bulb off -->
+    </div>
+
+    <script src="./bulb.js"></script> <!-- Links the JavaScript file -->
+</body>
+
+</html>

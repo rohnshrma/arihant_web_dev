@@ -1,0 +1,18 @@
+* {
+  color: #fff;
+}
+
+div {
+  background-color: black;
+}
+
+h1 {
+  background-color: red;
+}
+h2 {
+  background-color: teal;
+}
+
+a {
+  background-color: purple;
+}

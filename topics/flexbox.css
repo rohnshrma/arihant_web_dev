@@ -1,0 +1,37 @@
+#parent {
+  background-color: #f5f5f5; /* Sets a light gray background color for the parent container */
+
+  /* Padding around the parent container */
+  /* 1rem = 16px, so 4rem = 64px */
+  padding: 4rem;
+
+  display: flex; /* Enables flexbox for layout management */
+
+  /* Justifies content along the main axis (horizontal by default) */
+  /* space-around distributes equal space around the child elements */
+  justify-content: space-around;
+}
+
+.card {
+  background-color: tomato; /* Sets a red-orange background for each card */
+
+  /* Padding inside the card */
+  /* 64px (top & bottom) and 16px (left & right) */
+  padding: 64px 16px;
+
+  border-radius: 10px; /* Rounds the corners of the card */
+
+  text-align: center; /* Centers text inside the card */
+
+  /* Adds a shadow effect around the card */
+  /* 0 (no horizontal offset), 0 (no vertical offset), 10px blur radius, and dark gray (#333) shadow color */
+  box-shadow: 0 0 10px #333;
+
+  width: 20%; /* Sets the width of each card to 20% of the parent container */
+}
+
+.card img {
+  border-radius: 50%; /* Makes the image circular */
+
+  height: 200px; /* Fixes the image height to 200px */
+}
