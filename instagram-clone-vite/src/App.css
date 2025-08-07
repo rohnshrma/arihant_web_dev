@@ -1,0 +1,864 @@
+/* this is where we define our color scheme and design variables */
+/* think of these as the "brand colors" for our Instagram clone */
+:root {
+  --primary-color: #0095f6; /* Instagram's signature blue color */
+  --text-primary: #262626; /* main text color - dark gray */
+  --text-secondary: #8e8e8e; /* secondary text - lighter gray for less important stuff */
+  --border-color: #dbdbdb; /* border color - light gray lines */
+  --bg-primary: #ffffff; /* main background - white */
+  --bg-secondary: #fafafa; /* secondary background - very light gray */
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1); /* subtle shadow for cards */
+  --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.15); /* medium shadow for hover effects */
+  --border-radius: 8px; /* how rounded our corners should be */
+  --transition: all 0.2s ease; /* how fast animations should be */
+}
+
+/* this resets all the default browser styles so we start fresh */
+* {
+  margin: 0; /* remove default spacing */
+  padding: 0; /* remove default padding */
+  box-sizing: border-box; /* makes sizing elements easier */
+}
+
+/* make sure our page doesn't have any horizontal scrollbars */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* hide horizontal scroll */
+}
+
+/* remove the default outline that browsers put on buttons */
+button {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* this sets up our main body styling - fonts, colors, etc. */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; /* use system fonts for better performance */
+  -webkit-font-smoothing: antialiased; /* makes text look smoother on Mac */
+  -moz-osx-font-smoothing: grayscale; /* makes text look smoother on other systems */
+  background-color: var(--bg-secondary); /* use our light gray background */
+  color: var(--text-primary); /* use our dark text color */
+  line-height: 1.5; /* space between lines of text */
+  margin: 0;
+  padding: 0;
+  width: 100vw; /* full viewport width */
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* this is our main app container - it holds everything */
+.app {
+  min-height: 100vh; /* at least as tall as the screen */
+  display: flex; /* use flexbox for layout */
+  flex-direction: column; /* stack things vertically */
+  background-color: var(--bg-secondary);
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* this is the navigation bar at the top - like Instagram's header */
+.navbar {
+  background-color: var(--bg-primary); /* white background */
+  border-bottom: 1px solid var(--border-color); /* light gray line at bottom */
+  position: sticky; /* stays at top when scrolling */
+  top: 0;
+  z-index: 1000; /* makes sure it stays on top of other content */
+  backdrop-filter: blur(10px); /* blurs background behind it */
+  width: 100%;
+}
+
+/* this holds the content inside the navigation bar */
+.nav-content {
+  max-width: 975px; /* Instagram's max width */
+  margin: 0 auto; /* center it horizontally */
+  padding: 0 20px; /* some space on the sides */
+  height: 60px; /* how tall the nav bar is */
+  display: flex; /* use flexbox to arrange items */
+  align-items: center; /* center items vertically */
+  justify-content: space-between; /* spread items apart */
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* this is the Instagram logo styling */
+.logo {
+  font-family: 'Instagram Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 24px;
+  font-weight: 600; /* make it bold */
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); /* Instagram's rainbow gradient */
+  -webkit-background-clip: text; /* makes the gradient only show on the text */
+  -webkit-text-fill-color: transparent; /* makes the text transparent so gradient shows through */
+  background-clip: text;
+  cursor: pointer; /* shows it's clickable */
+}
+
+/* this centers the search box in the navigation */
+.nav-center {
+  position: absolute; /* take it out of normal flow */
+  left: 50%; /* move it to center */
+  transform: translateX(-50%); /* adjust it perfectly to center */
+  display: flex;
+  justify-content: center;
+  max-width: 300px;
+  width: 300px;
+}
+
+/* this styles the search input box */
+.search-box input {
+  width: 100%;
+  padding: 8px 16px; /* space inside the input */
+  border: 1px solid var(--border-color); /* light gray border */
+  border-radius: var(--border-radius); /* rounded corners */
+  background-color: var(--bg-secondary); /* light gray background */
+  font-size: 14px;
+  outline: none; /* remove default focus outline */
+  transition: var(--transition); /* smooth transition for changes */
+}
+
+/* when the search box is focused (clicked on) */
+.search-box input:focus {
+  border-color: #a8a8a8; /* darker border */
+  background-color: var(--bg-primary); /* white background */
+  box-shadow: var(--shadow-light); /* add subtle shadow */
+}
+
+/* this holds all the navigation icons */
+.nav-icons {
+  display: flex; /* arrange icons horizontally */
+  gap: 20px; /* space between icons */
+  align-items: center;
+}
+
+/* this styles each navigation icon button */
+.icon-btn {
+  background: none; /* no background */
+  border: none; /* no border */
+  cursor: pointer; /* shows it's clickable */
+  transition: var(--transition); /* smooth animation */
+  padding: 8px; /* space around the icon */
+  border-radius: 50%; /* make it circular */
+  color: var(--text-primary); /* dark color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+/* when you hover over an icon */
+.icon-btn:hover {
+  transform: scale(1.1); /* make it slightly bigger */
+  background-color: var(--bg-secondary); /* light gray background */
+}
+
+.icon-btn:focus {
+  outline: none;
+}
+
+/* this is the main content area - holds posts and sidebar */
+.main-container {
+  width: 100%;
+  max-width: 975px; /* Instagram's max width */
+  margin: 0 auto; /* center it */
+  padding: 30px 20px; /* space around content */
+  display: flex; /* use flexbox */
+  gap: 32px; /* space between posts and sidebar */
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* this holds the posts and stories */
+.content {
+  flex: 0 0 614px; /* fixed width for posts */
+  max-width: 614px;
+  width: 614px;
+}
+
+/* this is the stories section - those circles at the top */
+.stories {
+  background-color: var(--bg-primary); /* white background */
+  border: 1px solid var(--border-color); /* light gray border */
+  border-radius: var(--border-radius); /* rounded corners */
+  padding: 16px; /* space inside */
+  margin-bottom: 24px; /* space below */
+  display: flex; /* arrange stories horizontally */
+  gap: 16px; /* space between stories */
+  overflow-x: auto; /* allow horizontal scrolling */
+  scrollbar-width: none; /* hide scrollbar on Firefox */
+  -ms-overflow-style: none; /* hide scrollbar on IE */
+}
+
+/* hide scrollbar on Chrome/Safari */
+.stories::-webkit-scrollbar {
+  display: none;
+}
+
+/* this styles each individual story */
+.story-item {
+  display: flex; /* arrange items vertically */
+  flex-direction: column;
+  align-items: center; /* center items */
+  gap: 8px; /* space between avatar and username */
+  min-width: 80px; /* minimum width */
+  cursor: pointer; /* shows it's clickable */
+  transition: var(--transition); /* smooth animation */
+}
+
+/* when you hover over a story */
+.story-item:hover {
+  transform: translateY(-2px); /* move it up slightly */
+}
+
+/* this is the circular avatar container for stories */
+.story-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* make it perfectly round */
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); /* Instagram's story gradient */
+  padding: 2px; /* space for the gradient border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* the actual profile picture inside the story circle */
+.story-avatar img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%; /* make it round */
+  object-fit: cover; /* crop image to fit */
+  border: 2px solid var(--bg-primary); /* white border */
+}
+
+/* the username under each story */
+.story-item span {
+  font-size: 12px; /* small text */
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 80px;
+  overflow: hidden; /* hide text that's too long */
+  text-overflow: ellipsis; /* show ... for long text */
+  white-space: nowrap; /* don't wrap text */
+}
+
+/* this holds all the posts */
+.posts {
+  display: flex; /* stack posts vertically */
+  flex-direction: column;
+  gap: 24px; /* space between posts */
+  margin-bottom: 24px;
+}
+
+/* this styles each individual post */
+.post {
+  background-color: var(--bg-primary); /* white background */
+  border: 1px solid var(--border-color); /* light gray border */
+  border-radius: var(--border-radius); /* rounded corners */
+  overflow: hidden; /* hide anything that goes outside */
+  box-shadow: var(--shadow-light); /* subtle shadow */
+  transition: var(--transition); /* smooth animation */
+}
+
+/* when you hover over a post */
+.post:hover {
+  box-shadow: var(--shadow-medium); /* bigger shadow */
+}
+
+/* this is the header of each post - username and more button */
+.post-header {
+  display: flex; /* arrange items horizontally */
+  align-items: center; /* center vertically */
+  justify-content: space-between; /* spread items apart */
+  padding: 14px 16px; /* space inside */
+}
+
+/* this holds the user info in the post header */
+.post-user {
+  display: flex; /* arrange items horizontally */
+  align-items: center; /* center vertically */
+  gap: 12px; /* space between avatar and username */
+}
+
+/* the user's profile picture */
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; /* make it round */
+  object-fit: cover; /* crop image to fit */
+}
+
+/* the username text */
+.username {
+  font-weight: 600; /* make it bold */
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+/* the more options button (three dots) */
+.more-btn {
+  background: none; /* no background */
+  border: none; /* no border */
+  cursor: pointer; /* shows it's clickable */
+  color: var(--text-primary);
+  padding: 4px; /* space around */
+  border-radius: 50%; /* make it circular */
+  transition: var(--transition); /* smooth animation */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+/* when you hover over the more button */
+.more-btn:hover {
+  background-color: var(--bg-secondary); /* light gray background */
+}
+
+.more-btn:focus {
+  outline: none;
+}
+
+/* this holds the main post image */
+.post-image {
+  width: 100%;
+  max-height: 614px; /* maximum height */
+  overflow: hidden; /* hide anything that goes outside */
+}
+
+/* the actual post image */
+.post-image img {
+  width: 100%;
+  height: auto; /* keep aspect ratio */
+  object-fit: cover; /* crop image to fit */
+  transition: var(--transition); /* smooth animation */
+}
+
+/* when you hover over the post image */
+.post-image img:hover {
+  transform: scale(1.02); /* make it slightly bigger */
+}
+
+/* this holds the action buttons (like, comment, share) */
+.post-actions {
+  display: flex; /* arrange items horizontally */
+  align-items: center; /* center vertically */
+  justify-content: space-between; /* spread items apart */
+  padding: 8px 16px; /* space inside */
+}
+
+/* this holds the left side action buttons */
+.action-buttons {
+  display: flex; /* arrange buttons horizontally */
+  gap: 16px; /* space between buttons */
+  align-items: center;
+}
+
+/* this styles all action buttons (like, comment, share) */
+.action-btn, .like-btn {
+  background: none; /* no background */
+  border: none; /* no border */
+  cursor: pointer; /* shows it's clickable */
+  padding: 8px; /* space around */
+  border-radius: 4px; /* slightly rounded corners */
+  transition: var(--transition); /* smooth animation */
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+/* when you hover over action buttons */
+.action-btn:hover, .like-btn:hover {
+  background-color: var(--bg-secondary); /* light gray background */
+  transform: scale(1.1); /* make it slightly bigger */
+}
+
+.action-btn:focus, .like-btn:focus {
+  outline: none;
+}
+
+/* when a post is liked, make the heart red and animate it */
+.like-btn.liked {
+  animation: heartBeat 0.3s ease-in-out; /* heart beat animation */
+  color: #ed4956; /* Instagram's red color */
+}
+
+/* move bookmark button to the right */
+.bookmark-btn {
+  margin-left: auto;
+}
+
+/* this creates the heart beat animation */
+@keyframes heartBeat {
+  0% { transform: scale(1); } /* normal size */
+  50% { transform: scale(1.2); } /* bigger */
+  100% { transform: scale(1); } /* back to normal */
+}
+
+/* this holds the post info (likes, caption, comments) */
+.post-info {
+  padding: 0 16px 12px; /* space inside */
+}
+
+/* the likes count text */
+.likes {
+  font-weight: 600; /* make it bold */
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* the post caption */
+.caption {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4; /* space between lines */
+}
+
+/* this holds all the comments */
+.comments {
+  margin-bottom: 8px;
+}
+
+/* each individual comment */
+.comment {
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* the timestamp text */
+.timestamp {
+  color: var(--text-secondary); /* light gray */
+  font-size: 12px; /* small text */
+  text-transform: uppercase; /* all caps */
+  margin-bottom: 12px;
+}
+
+/* this holds the comment input area */
+.add-comment {
+  display: flex; /* arrange items horizontally */
+  align-items: center; /* center vertically */
+  gap: 8px; /* space between input and button */
+  padding: 16px; /* space inside */
+  border-top: 1px solid var(--border-color); /* line at top */
+}
+
+/* the comment input box */
+.add-comment input {
+  flex: 1; /* take up remaining space */
+  border: none; /* no border */
+  outline: none; /* no focus outline */
+  font-size: 14px;
+  padding: 8px 0; /* vertical padding only */
+  background: transparent; /* no background */
+}
+
+/* the post comment button */
+.post-btn {
+  background: none; /* no background */
+  border: none; /* no border */
+  color: var(--primary-color); /* Instagram blue */
+  font-weight: 600; /* bold */
+  font-size: 14px;
+  cursor: pointer; /* shows it's clickable */
+  opacity: 0.3; /* start faded */
+  transition: var(--transition); /* smooth animation */
+}
+
+/* when you hover over the post button */
+.post-btn:hover {
+  opacity: 1; /* make it fully visible */
+}
+
+/* this is the sidebar on the right side */
+.sidebar {
+  width: 300px; /* fixed width */
+  position: sticky; /* stays in place when scrolling */
+  top: 80px; /* position from top */
+  height: fit-content; /* only as tall as needed */
+  flex-shrink: 0; /* don't shrink */
+  flex-grow: 0; /* don't grow */
+  flex-basis: 300px; /* base width */
+}
+
+/* this holds your profile info in the sidebar */
+.profile-section {
+  display: flex; /* arrange items horizontally */
+  align-items: center; /* center vertically */
+  gap: 12px; /* space between items */
+  margin-bottom: 24px; /* space below */
+}
+
+/* your profile picture in the sidebar */
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%; /* make it round */
+  object-fit: cover; /* crop image to fit */
+}
+
+/* this holds your username and name */
+.profile-info {
+  flex: 1; /* take up remaining space */
+  display: flex; /* stack items vertically */
+  flex-direction: column;
+  gap: 2px; /* small space between items */
+}
+
+/* your display name */
+.name {
+  color: var(--text-secondary); /* light gray */
+  font-size: 14px;
+}
+
+/* the switch account button */
+.switch-btn {
+  background: none; /* no background */
+  border: none; /* no border */
+  color: var(--primary-color); /* Instagram blue */
+  font-weight: 600; /* bold */
+  font-size: 12px; /* small text */
+  cursor: pointer; /* shows it's clickable */
+  transition: var(--transition); /* smooth animation */
+}
+
+/* when you hover over the switch button */
+.switch-btn:hover {
+  opacity: 0.8; /* make it slightly transparent */
+}
+
+/* this holds the suggestions section */
+.suggestions {
+  display: flex; /* stack items vertically */
+  flex-direction: column;
+  gap: 16px; /* space between suggestions */
+}
+
+/* this is the header of the suggestions section */
+.suggestions-header {
+  display: flex; /* arrange items horizontally */
+  justify-content: space-between; /* spread items apart */
+  align-items: center; /* center vertically */
+}
+
+/* the "Suggestions for you" text */
+.suggestions-header span {
+  color: var(--text-secondary); /* light gray */
+  font-weight: 600; /* bold */
+  font-size: 14px;
+}
+
+/* the "See All" button */
+.see-all-btn {
+  background: none; /* no background */
+  border: none; /* no border */
+  color: var(--text-primary); /* dark text */
+  font-weight: 600; /* bold */
+  font-size: 12px; /* small text */
+  cursor: pointer; /* shows it's clickable */
+  transition: var(--transition); /* smooth animation */
+}
+
+/* when you hover over the see all button */
+.see-all-btn:hover {
+  color: var(--text-secondary); /* light gray */
+}
+
+/* each individual suggestion item */
+.suggestion-item {
+  display: flex; /* arrange items horizontally */
+  align-items: center; /* center vertically */
+  gap: 12px; /* space between items */
+  padding: 8px 0; /* vertical padding */
+}
+
+/* the suggestion profile picture */
+.suggestion-item img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; /* make it round */
+  object-fit: cover; /* crop image to fit */
+}
+
+/* this holds the suggestion username and info */
+.suggestion-info {
+  flex: 1; /* take up remaining space */
+  display: flex; /* stack items vertically */
+  flex-direction: column;
+  gap: 2px; /* small space between items */
+}
+
+/* the "follows you" or "new to Instagram" text */
+.follows {
+  color: var(--text-secondary); /* light gray */
+  font-size: 12px; /* small text */
+}
+
+/* the follow button */
+.follow-btn {
+  background: none; /* no background */
+  border: none; /* no border */
+  color: var(--primary-color); /* Instagram blue */
+  font-weight: 600; /* bold */
+  font-size: 12px; /* small text */
+  cursor: pointer; /* shows it's clickable */
+  transition: var(--transition); /* smooth animation */
+}
+
+/* when you hover over the follow button */
+.follow-btn:hover {
+  opacity: 0.8; /* make it slightly transparent */
+}
+
+/* this is the footer at the bottom */
+.footer {
+  background-color: var(--bg-primary); /* white background */
+  border-top: 1px solid var(--border-color); /* light gray line at top */
+  padding: 24px 0; /* space inside */
+  margin-top: auto; /* push it to the bottom */
+}
+
+/* this holds the footer content */
+.footer-content {
+  max-width: 975px; /* Instagram's max width */
+  margin: 0 auto; /* center it */
+  padding: 0 20px; /* space on sides */
+}
+
+/* this holds all the footer links */
+.footer-links {
+  display: flex; /* arrange links horizontally */
+  flex-wrap: wrap; /* allow wrapping to new lines */
+  gap: 16px; /* space between links */
+  margin-bottom: 16px; /* space below */
+}
+
+/* each footer link */
+.footer-links a {
+  color: var(--text-secondary); /* light gray */
+  text-decoration: none; /* no underline */
+  font-size: 12px; /* small text */
+  transition: var(--transition); /* smooth animation */
+}
+
+/* when you hover over footer links */
+.footer-links a:hover {
+  color: var(--text-primary); /* dark gray */
+}
+
+/* the copyright text */
+.footer-copyright {
+  color: var(--text-secondary); /* light gray */
+  font-size: 12px; /* small text */
+}
+
+/* this makes our app work well on different screen sizes */
+/* when the screen is smaller than 1024px (tablets) */
+@media (max-width: 1024px) {
+  .main-container {
+    gap: 24px; /* less space between posts and sidebar */
+    max-width: 900px; /* smaller max width */
+  }
+  
+  .sidebar {
+    width: 280px; /* smaller sidebar */
+  }
+}
+
+/* when the screen is smaller than 900px (small tablets) */
+@media (max-width: 900px) {
+  .main-container {
+    max-width: 614px; /* only show posts, no sidebar */
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+    width: 100%;
+  }
+  
+  .sidebar {
+    width: 100%; /* full width */
+    max-width: 614px;
+    position: static; /* don't stick to top */
+  }
+  
+  .content {
+    width: 100%;
+    max-width: 614px;
+  }
+}
+
+/* when the screen is smaller than 768px (phones) */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column; /* stack everything vertically */
+    gap: 16px; /* less space */
+    padding: 16px; /* less padding */
+  }
+  
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+  
+  .nav-center {
+    display: none; /* hide search bar on mobile */
+  }
+  
+  .stories {
+    padding: 12px; /* less padding */
+  }
+  
+  .story-item {
+    min-width: 60px; /* smaller stories */
+  }
+  
+  .story-avatar {
+    width: 50px; /* smaller avatars */
+    height: 50px;
+  }
+  
+  .story-avatar img {
+    width: 46px; /* smaller images */
+    height: 46px;
+  }
+}
+
+/* when the screen is smaller than 480px (small phones) */
+@media (max-width: 480px) {
+  .nav-content {
+    padding: 0 16px; /* less padding */
+  }
+  
+  .main-container {
+    padding: 16px; /* less padding */
+  }
+  
+  .post-actions {
+    padding: 8px 12px; /* less padding */
+  }
+  
+  .post-header {
+    padding: 12px; /* less padding */
+  }
+  
+  .add-comment {
+    padding: 12px; /* less padding */
+  }
+  
+  .logo {
+    font-size: 20px; /* smaller logo */
+  }
+}
+
+/* this styles the scrollbar to look more modern */
+::-webkit-scrollbar {
+  width: 6px; /* thin scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary); /* light gray background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color); /* light gray thumb */
+  border-radius: 3px; /* rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8; /* darker on hover */
+}
+
+/* profile page specific styles */
+.profile-post-item {
+  position: relative; /* needed for the overlay positioning */
+  overflow: hidden; /* hide anything that goes outside the container */
+  cursor: pointer; /* shows it's clickable */
+  border-radius: 8px; /* rounded corners */
+  transition: box-shadow 0.2s; /* smooth shadow animation */
+}
+.profile-post-item:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12); /* bigger shadow on hover */
+}
+.profile-post-img {
+  transition: transform 0.25s; /* smooth zoom animation */
+}
+.profile-post-item:hover .profile-post-img {
+  transform: scale(1.08); /* zoom in slightly */
+  filter: brightness(0.85); /* make it darker */
+}
+.profile-post-overlay {
+  position: absolute; /* position over the image */
+  inset: 0; /* cover the entire container */
+  background: rgba(0,0,0,0.35); /* semi-transparent dark overlay */
+  opacity: 0; /* hidden by default */
+  display: flex; /* center the icons */
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s; /* smooth fade in/out */
+  pointer-events: none; /* don't block clicks */
+}
+.profile-post-item:hover .profile-post-overlay {
+  opacity: 1; /* show on hover */
+  pointer-events: auto; /* allow clicks */
+}
+.profile-follow-btn {
+  transition: background 0.2s, color 0.2s; /* smooth color changes */
+}
+.profile-follow-btn:hover {
+  background: #fafafa; /* light background */
+  color: #ed4956; /* red color */
+  border-color: #ed4956; /* red border */
+}
+.profile-follow-btn:active {
+  background: #f5f5f5; /* darker when clicked */
+}
+.profile-modal {
+  position: fixed; /* cover the entire screen */
+  inset: 0; /* from top to bottom, left to right */
+  background: rgba(0,0,0,0.7); /* dark overlay */
+  display: flex; /* center the modal */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* make sure it's on top of everything */
+}
+.profile-modal-content {
+  position: relative; /* for the close button positioning */
+  background: #fff; /* white background */
+  border-radius: 12px; /* rounded corners */
+  padding: 0; /* no padding */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18); /* big shadow */
+  display: flex; /* center the image */
+  flex-direction: column;
+  align-items: center;
+}
+.profile-modal-close {
+  position: absolute; /* position in the top right */
+  top: 8px;
+  right: 12px;
+  background: none; /* no background */
+  border: none; /* no border */
+  font-size: 2rem; /* big X */
+  color: #333; /* dark color */
+  cursor: pointer; /* shows it's clickable */
+  z-index: 2; /* on top of the image */
+  transition: color 0.2s; /* smooth color change */
+}
+.profile-modal-close:hover {
+  color: #ed4956; /* red on hover */
+}
+@media (max-width: 600px) {
+  .profile-modal-content img {
+    max-width: 98vw; /* almost full width on mobile */
+    max-height: 60vh; /* 60% of screen height */
+  }
+}
